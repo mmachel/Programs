@@ -1,0 +1,30 @@
+name: generate_UMLDiagramm_from_puml
+
+on:
+  push:                           
+    paths:                            
+      - 'Program2/main.puml' 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Generate PNG Diagrams
+      uses: lokkju/github-action-plantuml@master
+      with:
+        args: Program2/main.puml
+
+    - uses: EndBug/add-and-commit@v4 
+      with:
+        add: "Program2/main.png"
+        author_name: GitHubAction
+        message: 'Add new class diagramm'
+
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
