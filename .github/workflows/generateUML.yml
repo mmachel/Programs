@@ -2,7 +2,7 @@ name: generate_UMLDiagramm_from_Csharp
 
 on:
   push:                           
-    paths: |                           
+    paths:                           
       - Program2/Program.cs
 
 
