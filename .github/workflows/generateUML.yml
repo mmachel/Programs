@@ -27,7 +27,7 @@ jobs:
     - name: Generate UML Files
       run: |
            puml-gen Program2/Program.cs Program2/main.puml -createAssociation
-           cd Aufgabe_02
+           cd Program2
            dir
            cd ..
  
