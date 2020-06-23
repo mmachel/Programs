@@ -149,7 +149,8 @@ namespace Pets
         {
             var cat1 = new Cat("Miuwa");
             var cat2 = new Cat("Gatinho");
-            var dog = new Dog("Bock", "OtherOne");
+            var dog1 = new Dog("Bock", "OtherOne");
+            var dog2 = new Dog("Spider", "OtherOne");
             var rab1 = new Rabbit("Runner", "Someone");
             var rab2 = new Rabbit("Coelho", "Someone");
             var gold1 = new Goldfish("Gluglu", "TheOne");
@@ -162,6 +163,8 @@ namespace Pets
             var garden = new List<Mammal>();
             garden.Add(cat1);
             garden.Add(cat2);
+            garden.Add(dog1);
+            garden.Add(dog2);
             garden.Add(rab1);
             garden.Add(rab2);
             var aquarium = new List<Fish>();
