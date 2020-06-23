@@ -3,7 +3,7 @@ name: generate_UMLDiagramm_from_Csharp
 on:
   push:                           
     paths: |                           
-      - Program2/**.cs
+      - Program2/Program.cs
 
 
 jobs:
@@ -26,7 +26,7 @@ jobs:
  
     - name: Generate UML Files
       run: |
-           puml-gen Program2/**.cs Program2/main.puml -createAssociation
+           puml-gen Program2/Program.cs Program2/main.puml -createAssociation
            cd Aufgabe_02
            dir
            cd ..
