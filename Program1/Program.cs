@@ -6,7 +6,8 @@ namespace Program1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var person1 = new Person("Me");
+            Console.WriteLine(person1);
         }
     }
 }
