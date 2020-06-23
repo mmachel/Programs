@@ -1,0 +1,52 @@
+name: generate_UMLDiagramm_from_Csharp
+
+on:
+  push:                           
+    paths: |                           
+      - Program2/**.cs
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+      
+    - name: Install PlantUMLClassGenerator
+      run: dotnet tool install --global PlantUmlClassDiagramGenerator --version 1.2.0
+ 
+    - name: Generate UML Files
+      run: |
+           puml-gen Program2/**.cs Program2/main.puml -createAssociation
+           cd Aufgabe_02
+           dir
+           cd ..
+ 
+    - uses: EndBug/add-and-commit@v4 
+      with:
+        add: "Program2/main.puml"
+        author_name: GitHubAction
+        message: "Add new version of plantUML file"
+
+    - name: Generate PNG Diagrams
+      uses: lokkju/github-action-plantuml@master
+      with:
+        args: Program2/main.puml
+
+    - uses: EndBug/add-and-commit@v4 
+      with:
+        add: "Program2/main.png"
+        author_name: GitHubAction
+        message: 'Add new class diagramm'
+
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
