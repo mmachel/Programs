@@ -36,7 +36,7 @@ namespace Pets
     }
     public class Cat : Mammal
     {
-        public Cat(string Name, string Besitzer) : base(Besitzer)
+        public Cat(string Name) : base(null)
         {
             this.Name = Name;
         }
@@ -78,6 +78,27 @@ namespace Pets
         public override string ToString()
         {
             return string.Format($"Art: {typeof(Rabbit).Name}, Name: {Name}, Besitzer: {Besitzer}");
+        }
+    }
+    class Dog : Mammal
+    {
+        public Dog(string Name, string Besitzer) : base(Besitzer)
+        {
+            this.Name = Name;
+        }
+
+        public override void Attend()
+        {
+            Console.WriteLine("Attending Dog");
+        }
+
+        public override void Move()
+        {
+            Console.WriteLine("Running...");
+        }
+        public override string ToString()
+        {
+            return string.Format($"Name: {Name}, Besitzer: {Besitzer}");
         }
     }
     public class Goldfish : Fish, IStrokeable
@@ -126,8 +147,9 @@ namespace Pets
     {
         static void Main()
         {
-            var cat1 = new Cat("Miuwa", null);
-            var cat2 = new Cat("Gatinho", null);
+            var cat1 = new Cat("Miuwa");
+            var cat2 = new Cat("Gatinho");
+            var dog = new Dog("Bock", "OtherOne");
             var rab1 = new Rabbit("Runner", "Someone");
             var rab2 = new Rabbit("Coelho", "Someone");
             var gold1 = new Goldfish("Gluglu", "TheOne");
@@ -161,7 +183,6 @@ namespace Pets
             //List<Pet> zoo = new List<Pet>();
             //zoo.AddRange(garden);
             List<Pet> zoo = new List<Pet>(garden);
-
             zoo.AddRange(aquarium);
             foreach (var z in zoo)
             {
