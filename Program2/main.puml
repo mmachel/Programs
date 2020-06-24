@@ -1,1 +1,63 @@
-
+@startuml
+interface IStrokeable {
+    Strocke() : void
+}
+abstract class Pet {
+    + Name : string <<get>> <<set>>
+    + <<readonly>> Besitzer : string
+    + Pet(Besitzer:string)
+    + {abstract} Attend() : void
+}
+abstract class Mammal {
+    + Mammal(Besitzer:string)
+    + {abstract} Move() : void
+    + Strocke() : void
+}
+abstract class Fish {
+    + Fish(Besitzer:string)
+    + {abstract} Swim() : void
+    + <<override>> Attend() : void
+}
+class Cat {
+    + Cat(Name:string)
+    + <<override>> Attend() : void
+    + <<override>> Move() : void
+    + <<new>> Strocke() : void
+    + <<override>> ToString() : string
+}
+class Rabbit {
+    + Rabbit(Name:string, Besitzer:string)
+    + <<override>> Attend() : void
+    + <<override>> Move() : void
+    + <<override>> ToString() : string
+}
+class Dog {
+    + Dog(Name:string, Besitzer:string)
+    + <<override>> Attend() : void
+    + <<override>> Move() : void
+    + <<override>> ToString() : string
+}
+class Goldfish {
+    + Goldfish(Name:string, Besitzer:string)
+    + Strocke() : void
+    + <<override>> Swim() : void
+    + <<override>> ToString() : string
+}
+class Guppy {
+    + Guppy(Name:string, Besitzer:string)
+    + <<override>> Swim() : void
+    + <<override>> ToString() : string
+}
+class Program {
+    {static} Main() : void
+}
+Pet <|-- Mammal
+IStrokeable <|-- Mammal
+Pet <|-- Fish
+Mammal <|-- Cat
+Mammal <|-- Rabbit
+Mammal <|-- Dog
+Fish <|-- Goldfish
+IStrokeable <|-- Goldfish
+Fish <|-- Guppy
+@enduml
