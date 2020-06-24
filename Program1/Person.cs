@@ -4,16 +4,14 @@ using System.Text;
 
 namespace Program1
 {
-    class Person
+    public abstract class Person
     {
         public string Name { get; set; }
-        public Person(string Name)
+        public DateTime BirthDate{get; set;}
+        public Person(string Name, DateTime BirthDate)
         {
             this.Name = Name;
-        }
-        public override string ToString()
-        {
-            return string.Format($"Name: {Name}");
+            this.BirthDate = BirthDate;
         }
     }
 }
